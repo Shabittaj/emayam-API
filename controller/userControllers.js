@@ -76,7 +76,7 @@ export const loginUser = async (req, res, next) => {
 export const profile = async (req, res, next) => {
     try {
         const id = req.user.userId;
-        const user = await userModel.findOne({ _id: req.user.userId }).select("firstName lastName role email -password");
+        const user = await userModel.findOne({ _id: req.user.userId }).select("firstName lastName role email phoneNumber -password");
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
